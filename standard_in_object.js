@@ -1,3 +1,4 @@
+import jsontest from './test.json';
 console.log('표준 내장 객체 겅퍼 시작');
 console.log('**문자**');
 
@@ -468,3 +469,105 @@ console.log('**배열**');
 // }
 // console.log(Array.isArray(arr)); //true
 // console.log(Array.isArray(arraylike)); //false
+
+
+
+console.log('========================');
+console.log('**객체**');
+
+
+/*
+    Object.assign();
+    하나 이상의 출처(Source) 객체로부터 대상(Target) 객체로 속성을 복사하고 대생 객체를 반환.
+*/
+// const target = {a : 1 , b : 2};
+// const source1 = {b : 3 , c : 4};
+// const source2 = {c : 5 , d : 6};
+// const result = Object.assign({},target, source1, source2);
+// const result2 = { // 전개 연산자로 하는법 - 개인적으로 이게 직관적
+//     ...target,
+//     ...source1,
+//     ...source2
+// }
+// console.log(target,result,result2);
+
+/*
+    Object.entries()
+    주어진 객체의 각 속성과 값으로 하나의 배열 만들어 요소로 추가한 2차원 배열을 반환.    
+*/
+// const user = {
+//     name : 'lsk',
+//     age : 11,
+//     isValid : true,
+//     email : 'thesecon@gmail.com'
+// }
+// console.log(Object.entries(user));
+
+// for (const [key,value] of Object.entries(user)) {
+//     console.log(key,value);
+// }
+
+/*
+    Object.keys()
+    주어진 객체의 속성(프로퍼티,key) 이름을 나열한 배열을 반환.
+*/
+// const user = {
+//     name : 'lsk',
+//     age : 11,
+//     isValid : true,
+//     email : 'thesecon@gmail.com'
+// }
+// console.log(Object.keys(user));
+
+/*
+    Object.values()
+    주어진 객체의 속성 값(value)을 나열한 배열을 반환.
+*/
+// const user = {
+//     name : 'lsk',
+//     age : 11,
+//     isValid : true,
+//     email : 'thesecon@gmail.com'
+// }
+// console.log(Object.values(user));
+
+
+
+console.log('========================');
+console.log('**Json**');
+
+
+/*
+    JSON(Javascript Object Notation)
+
+    - 데이터 전달을 위한 표준 포맷.
+    - 문자, 숫자, 불린, Null, 객체, 배열만 사용
+    - 문자는 큰 따옴표만 사용
+    - 후행 쉼표 사용 불가
+    - .json 확장자 사용
+
+    JSON.stringify() - 데이터를 JSON 문자로 변환.
+    JSON.parse() - JSON 문자를 분석해 데이터로 변환.
+
+    const a = {
+        x:1,
+        y:2, <-- 후행 쉼표라고하는데, 이거를 꼭 제거해야함.
+    }
+*/
+console.log('// --- stringify --- //');
+console.log(JSON.stringify('Hello World!'));
+console.log(JSON.stringify(123));
+console.log(JSON.stringify(false));
+console.log(JSON.stringify(null));
+console.log(JSON.stringify({ a : 'A', b: 2}));
+console.log(JSON.stringify([1,2,3,4]));
+
+console.log('// --- parse --- //');
+console.log(JSON.parse('"Hello World!"')); // 문자는 꼭 "" 를 붙여야함
+console.log(JSON.parse('123'));
+console.log(JSON.parse('false'));
+console.log(JSON.parse('null'));
+console.log(JSON.parse('{ "a" : "A", "b": 2}')); // 문자는 꼭 "" 를 붙여야함
+console.log(JSON.parse('[1,2,3,4]'));
+
+console.log(jsontest); // Parcel 번들러로 통해서 Javascript데이터로 가져올수있다.
