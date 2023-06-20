@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script defer type="module" src="./webapi.js"></script>
+    <style>
+        body {
+            margin: 0;
+        }
+        nav {
+            background-color: white;
+            padding: 10px;
+            border: 4px solid #000;
+            position: fixed;
+            bottom: 0;
+            right: 0;
+        }
+        nav input {
+            width: 50px;
+        }
+        section {
+            height: 100vh;
+            border: 10px solid;
+            box-sizing: border-box;
+        }
+        section.page1 { color: red; }
+        section.page2 { color: orange; }
+        section.page3 { color: green; }
+    </style>
+</head>
+<body>    
+    <nav>
+        <a href="#/page1">Hello 1</a> /
+        <a href="#/page2">Hello 2</a> /
+        <a href="#/page3">Hello 3</a>
+        <input type="text" />
+    </nav>
+    <div id="app">
+        <section id="/page1" class="page1">
+            <h1>page1</h1>
+        </section>
+        <section id="/page2" class="page2">
+            <h1>page2</h1>
+        </section>
+        <section id="/page3" class="page3">
+            <h1>page3</h1>
+        </section>
+    </div>
+</body>
+</html>
