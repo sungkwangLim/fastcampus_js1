@@ -160,7 +160,7 @@ console.log(location);
     브라우저 히스토리(세션 기록) 정보를 반환하거나 제어합니다.
     
     - .length: 등록된 히스토리 개수
-    - .scrollRestoration: 히스토리 탐색시 스크롤 위치 복원 여부 확인 및 지정
+    - .scrollRestoration: 히스토리 탐색시 `스크롤 위치 복원` 여부 확인 및 지정
     - .state: 현재 히스토리에 등록된 데이터
 
     - .back(): 뒤로가기
@@ -172,3 +172,60 @@ console.log(location);
      > 모든 브라우저(Safari 제외)는 '제목' 옵션을 무시합니다. ''빈문자열로 넣으면됨.
 */
 console.log(history);
+
+/*
+    history2 예제 페이지
+    history.html에서 확인.
+*/
+const page1 = /* html */`
+    <section class="page1">
+        <h1>Page 1</h1>
+    </section>
+`;
+const page2 = /* html */`
+    <section class="page2">
+        <h1>Page 2</h1>
+    </section>
+`;
+const page3 = /* html */`
+    <section class="page3">
+        <h1>Page 3</h1>
+    </section>
+`;
+const page4 = /* html */`
+    <section class="page4">
+        <h1>Page 4</h1>
+    </section>
+`;
+const pageNotFound = /* html */`
+    <section class="pageNot">
+        <h1>404 Page Not Found!</h1>
+    </section>
+`;
+
+const pages = [
+    { path: '#/page1', template: page1},
+    { path: '#/page2', template: page2},
+    { path: '#/page3', template: page3}
+];
+const appEl = document.querySelector('#app');
+
+const render = () =>{
+    const page = pages.find(page=> page.path === location.hash);
+    appEl.innerHTML = page ? page.template : pageNotFound
+};
+
+window.addEventListener('popstate',render);
+render();
+
+const pagePush = num => {
+    history.pushState(`전달할 데이터 - ${num}`,null,`#/page${num}`);
+    render();
+};
+
+const inputEl = document.querySelector('nav input');
+inputEl.addEventListener('keydown',event =>{
+    if(event.key ==='Enter'){
+        pagePush(event.target.value);
+    }
+});
